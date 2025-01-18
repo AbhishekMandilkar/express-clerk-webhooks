@@ -37,6 +37,11 @@ import { UserJSON } from '@clerk/clerk-sdk-node';
 
 const app = express();
 
+// Health check endpoint
+app.get('/health', (_, res) => {
+  res.status(200).json({ status: 'healthy' });
+});`
+
 // Initialize webhook handler
 const webhookHandler = new WebhookManager({
   path: '/api/clerk-webhooks',

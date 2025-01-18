@@ -1,6 +1,6 @@
 # Express Clerk Webhook Handler 🚀
 
-[![npm version](https://badge.fury.io/js/express-webhook-handler.svg)](https://badge.fury.io/js/express-webhook-handler)
+[![npm version](https://badge.fury.io/js/clerk-auth-webhook-handler.svg)](https://badge.fury.io/js/clerk-auth-webhook-handler)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
@@ -19,20 +19,20 @@ A type-safe webhook handler for Express applications specifically designed for C
 
 ```bash
 # Using npm
-npm install express-webhook-handler
+npm install clerk-auth-webhook-handler
 
 # Using yarn
-yarn add express-webhook-handler
+yarn add clerk-auth-webhook-handler
 
 # Using pnpm
-pnpm add express-webhook-handler
+pnpm add clerk-auth-webhook-handler
 ```
 
 ## 🚀 Quick Start
 
 ```typescript
 import express from 'express';
-import { WebhookManager } from 'express-webhook-handler';
+import { ClerkWebhookManager } from 'clerk-auth-webhook-handler';
 import { UserJSON } from '@clerk/clerk-sdk-node';
 
 const app = express();
@@ -43,7 +43,7 @@ app.get('/health', (_, res) => {
 });`
 
 // Initialize webhook handler
-const webhookHandler = new WebhookManager({
+const webhookHandler = new ClerkWebhookManager({
   path: '/api/clerk-webhooks',
   secretKey: process.env.CLERK_WEBHOOK_SECRET,
   handlers: {
@@ -79,7 +79,7 @@ The webhook handler supports all Clerk webhook events including:
 The handler automatically verifies Clerk webhook signatures when you provide the secret key:
 
 ```typescript
-const webhookHandler = new WebhookManager({
+const webhookHandler = new ClerkWebhookManager({
   path: '/api/clerk-webhooks',
   secretKey: process.env.CLERK_WEBHOOK_SECRET, // Required for security
   handlers: {
@@ -92,13 +92,13 @@ const webhookHandler = new WebhookManager({
 
 ```typescript
 import express from 'express';
-import { WebhookManager } from 'express-webhook-handler';
+import { ClerkWebhookManager } from 'clerk-auth-webhook-handler';
 import { UserJSON } from '@clerk/clerk-sdk-node';
 
 const app = express();
 
 // Initialize webhook handler
-const webhookHandler = new WebhookManager({
+const webhookHandler = new ClerkWebhookManager({
   path: '/api/clerk-webhooks',
   secretKey: process.env.CLERK_WEBHOOK_SECRET,
   handlers: {

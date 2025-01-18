@@ -35,7 +35,7 @@ export class ClerkWebhookManager {
         });
 
         if (event.type in this.handlers) {
-          await this.handlers[event.type](event);
+          await this.handlers[event.type]?.(event);
           return res
             .status(200)
             .json({ message: "Webhook processed successfully" });
